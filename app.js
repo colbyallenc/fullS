@@ -6,11 +6,14 @@ const cookieParser = require('cookie-parser');
 const bodyParser   = require('body-parser');
 const layouts      = require('express-ejs-layouts');
 const mongoose     = require('mongoose');
+const dotenv       = require('dotenv');
+const session      = require('express-session');
+const passport     = require('passport');
 
-const session    = require('express-session');
-const passport   = require('passport');
 
-mongoose.connect('mongodb://localhost/angular-auth');
+require("dotenv").config();
+mongoose.connect(process.env.MONGODB_URI);
+// mongoose.connect('mongodb://localhost/angular-auth');
 
 const app = express();
 
