@@ -1,0 +1,30 @@
+<h1> Authentication Sample </h1>
+<!-- a simple form to login or signup -->
+<form>
+  <h2> Login or Signup </h2>
+  <label> Username </label>
+  <input type="text" [(ngModel)]="formInfo.username" name="username"/>
+  <br>
+  <label> Password </label>
+  <input type="password" [(ngModel)]="formInfo.password" name="password"/>
+
+<!-- Added 2 event bindings to on the buttons, Methods implemented in app.component.ts -->
+  <button (click)="login()"> login </button>
+  <button (click)="signup()"> signup </button>
+</form>
+<p class="error"> {{ error }} </p>
+
+<!-- Once logged in we show the user object (as a JSON for debug purpose) and the logout / getPrivateData buttons. -->
+<div *ngIf="user">
+  <h2> You are now logged in as {{ user.username }}!! </h2>
+  <p> Here's the user object </p>
+  <pre> {{ user | json }} </pre>
+
+  <p *ngIf="privateData"> Here's some data fetched from a protected API </p>
+  <pre> {{ privateData | json }} </pre>
+
+  <button (click)="logout()"> logout </button>
+  <button (click)="getPrivateData()"> Get private data </button>
+</div>
+
+<p class="error"> {{ error }} </p>
